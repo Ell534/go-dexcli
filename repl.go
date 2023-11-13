@@ -3,10 +3,8 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"strings"
-
-	// "log"
 	"os"
+	"strings"
 )
 
 func startRepl() {
@@ -29,7 +27,7 @@ func startRepl() {
 
 		command, ok := availableCommands[commandName]
 		if !ok {
-			fmt.Println("Invalid Command")
+			fmt.Println("Invalid Command, type 'help' to see commands")
 			continue
 		}
 
@@ -38,22 +36,22 @@ func startRepl() {
 }
 
 type cliCommand struct {
-	name string
+	name        string
 	description string
-	callback func() error
+	callback    func() error
 }
 
 func getCommands() map[string]cliCommand {
-	return map[string]cliCommand {
+	return map[string]cliCommand{
 		"help": {
-			name: "help",
+			name:        "help",
 			description: "Prints the help menu",
-			callback: commandHelp,
+			callback:    commandHelp,
 		},
 		"exit": {
-			name: "exit",
+			name:        "exit",
 			description: "Exits the Pokedex",
-			callback: commandExit,
+			callback:    commandExit,
 		},
 	}
 }
